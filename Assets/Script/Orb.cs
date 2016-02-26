@@ -65,7 +65,7 @@ public class Orb : MonoBehaviour {
 
     public void ActivateBarrier()
     {
-        impale.Play("Barrier");
+        impale.SetBool("Active", true);
         SpecialEffectHelper.Instance.GroundExplosion(barrier.transform.position - new Vector3(0,2.5f,0));
         barrierTimer = 100f;
         currentCoolDown = coolDown;
@@ -79,11 +79,11 @@ public class Orb : MonoBehaviour {
         else barrierButton.enabled = true;
     }
 	
-
     void BarrierSkill()
     {
         if (barrierTimer > 0f)
         {
+            
             barrier.GetComponent<Renderer>().enabled = true;
             barrier.GetComponent<Collider2D>().enabled = true;
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), barrier.GetComponent<Collider2D>());
@@ -91,6 +91,7 @@ public class Orb : MonoBehaviour {
         }
         else
         {
+            impale.SetBool("Active", false);
             barrier.GetComponent<Renderer>().enabled = false;
             barrier.GetComponent<Collider2D>().enabled = false;
         }

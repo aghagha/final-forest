@@ -7,6 +7,7 @@ public class Orb : MonoBehaviour {
 	public float speed = 20f;
     public GameObject barrier;
     public Button barrierButton;
+    public Animator impale;
 
     public float coolDown;
     float currentCoolDown;
@@ -18,6 +19,8 @@ public class Orb : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
         barrier.GetComponent<Renderer>().enabled = false;
         barrier.GetComponent<Collider2D>().enabled = false;
+        impale = barrier.GetComponent<Animator>();
+        //barrierButton.enabled = false;
     }
 	
 	void Start () {
@@ -62,6 +65,8 @@ public class Orb : MonoBehaviour {
 
     public void ActivateBarrier()
     {
+        impale.Play("Barrier");
+        SpecialEffectHelper.Instance.GroundExplosion(barrier.transform.position - new Vector3(0,2.5f,0));
         barrierTimer = 100f;
         currentCoolDown = coolDown;
         barrierButton.enabled = false;

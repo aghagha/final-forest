@@ -20,7 +20,8 @@ public class BulletFather : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        life--;
+        life = life - Time.deltaTime;
+        print(life);
 	}
 
     public virtual void SpawnBullet()
@@ -38,6 +39,14 @@ public class BulletFather : MonoBehaviour {
             Vector2 newVelocity = velocity.normalized;
             newVelocity *= maxVelocity;
             rb.velocity = newVelocity;
+        }
+    }
+
+    protected void OnCollisionEnter2D (Collision2D col)
+    {
+        if(col.gameObject.tag != "Player")
+        {
+            SpecialEffectHelper.Instance.Spark(transform.position);
         }
     }
 }

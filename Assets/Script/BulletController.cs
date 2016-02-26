@@ -7,6 +7,8 @@ public class BulletController : MonoBehaviour {
 
     public float bulletTimer = 1000f;
 
+    public float cd = 1f;
+    public float lastSpawn;
 
 	// Use this for initialization
 	void Start () {

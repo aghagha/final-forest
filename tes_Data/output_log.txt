@@ -15,7 +15,57 @@ Loading D:\UnityProject\HockeyKW\New Unity Project\tes_Data\Managed\UnityEngine.
 Platform assembly: D:\UnityProject\HockeyKW\New Unity Project\tes_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading D:\UnityProject\HockeyKW\New Unity Project\tes_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: D:\UnityProject\HockeyKW\New Unity Project\tes_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.038 seconds
-desktop: 1360x768 60Hz; virtual: 1360x768 at 0,0
+- Completed reload, in  0.035 seconds
+desktop: 1360x768 60Hz; virtual: 2720x768 at -1360,0
 <RI> Initializing input.
 <RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: D:\UnityProject\HockeyKW\New Unity Project\tes_Data\Managed\System.dll (this message is harmless)
+NullReferenceException: Object reference not set to an instance of an object
+  at Mainmenu.setActive () [0x00000] in <filename unknown>:0 
+  at Mainmenu.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 23a4 -> priority: 1 
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.258739 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 202.
+Total: 0.160730 ms (FindLiveObjects: 0.022794 ms CreateObjectMapping: 0.007305 ms MarkObjects: 0.122155 ms  DeleteObjects: 0.008182 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.610191 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 454.
+Total: 0.240511 ms (FindLiveObjects: 0.015196 ms CreateObjectMapping: 0.011397 ms MarkObjects: 0.206027 ms  DeleteObjects: 0.007598 ms)
+
+BAM! You Dealt 214.3372 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+You took 239.465 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+You took 100 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+You took 100 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+You took 100 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+You took 100 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+BAM! You Dealt 249.1085 damage!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+

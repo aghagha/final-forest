@@ -18,7 +18,7 @@ public class MonsterOneBulletOne : BulletFather {
 	
 	// Update is called once per frame
 	private void Update () {
-        life--;
+        life -= Time.deltaTime;
         //if (life <= 20f)
         //    Kamikaze();
         if (life <= 0f)

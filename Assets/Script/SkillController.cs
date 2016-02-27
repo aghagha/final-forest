@@ -19,7 +19,7 @@ public class SkillController : MonoBehaviour {
 
     void ShootRays()
     {
-        Vector3 pos = new Vector3(0, -7.7f, 10.41f);
+        Vector3 pos = new Vector3(0, -7.7f, 2.8f);
         Instantiate(rays, pos, Quaternion.identity);
     }
 }

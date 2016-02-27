@@ -6,9 +6,14 @@ public class RaySkill : MonoBehaviour {
 
     Rigidbody2D rb;
 
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
 	// Use this for initialization
 	void Start () {
-	    force = new Vector2(0,-300f);
+	    force = new Vector2(0,10f);
         SpawnRay();
 	}
 	
@@ -19,6 +24,7 @@ public class RaySkill : MonoBehaviour {
 
     void SpawnRay()
     {
-        rb.AddForce(force * Time.deltaTime, ForceMode2D.Impulse);
+        rb.velocity = force;
+        //rb.AddForce(force * Time.deltaTime, ForceMode2D.Impulse);
     }
 }

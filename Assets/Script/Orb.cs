@@ -10,7 +10,6 @@ public class Orb : MonoBehaviour {
     public float coolDownA;
     float currentCoolDownA;
     public GameObject barrier;
-    public Animator impale;
     public Button barrierButton;
 
     //skill 2 - bullet
@@ -18,17 +17,21 @@ public class Orb : MonoBehaviour {
     float currentCoolDownB;
     public GameObject rays;
     Vector2 force;
+    public Button rayButton;
 
     Rigidbody2D rb;
     public float barrierTimer = 0f;
+    Animator impale;
 
-	void Awake(){
+    void Awake(){
         currentCoolDownA = coolDownA;
+        currentCoolDownB = coolDownB;
 		rb = GetComponent<Rigidbody2D>();
         barrier.GetComponent<Renderer>().enabled = false;
         barrier.GetComponent<Collider2D>().enabled = false;
         impale = barrier.GetComponent<Animator>();
         barrierButton.enabled = false;
+        rayButton.enabled = false;
     }
 	
 	void Start () {
@@ -36,14 +39,17 @@ public class Orb : MonoBehaviour {
 	}
 
 	void Update () {
-        currentCoolDownA--;
+        currentCoolDownA -= Time.deltaTime;
+        currentCoolDownB -= Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
         BarrierSkill();
+
         CountCooldown(barrierButton, coolDownA, currentCoolDownA);
+        CountCooldown(rayButton, coolDownB, currentCoolDownB);
     }
 	
 	void FixedUpdate(){
@@ -77,7 +83,7 @@ public class Orb : MonoBehaviour {
     {
         impale.SetBool("Active", true);
         SpecialEffectHelper.Instance.GroundExplosion(barrier.transform.position - new Vector3(0,2.5f,0));
-        barrierTimer = 100f;
+        barrierTimer = 2f;
         currentCoolDownA = coolDownA;
         barrierButton.enabled = false;
     }
@@ -86,6 +92,8 @@ public class Orb : MonoBehaviour {
     public void ShootRays()
     {
         Instantiate(rays, new Vector3(0, -7.7f, 10.41f), Quaternion.identity);
+        currentCoolDownB = coolDownB;
+        rayButton.enabled = false;
     }
 
     public void CountCooldown(Button button, float coolDown, float currentCoolDown)
@@ -103,7 +111,7 @@ public class Orb : MonoBehaviour {
             barrier.GetComponent<Renderer>().enabled = true;
             barrier.GetComponent<Collider2D>().enabled = true;
             Physics2D.IgnoreCollision(GetComponent<Collider2D>(), barrier.GetComponent<Collider2D>());
-            barrierTimer -= 1f;
+            barrierTimer -= Time.deltaTime;
         }
         else
         {

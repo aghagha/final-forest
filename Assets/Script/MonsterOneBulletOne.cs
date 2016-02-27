@@ -34,8 +34,6 @@ public class MonsterOneBulletOne : BulletFather {
         currMag = rb.velocity.magnitude;
     }
 
-    
-
     /*void SpawnBullet()
     {
         force = new Vector2(Random.Range(-300f, 300f), -500f);

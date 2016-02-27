@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     bool isDead = false;
 
     public float hp;
+    public Text hpText;
     public GameObject playerAvatar;
     public Slider healthBar;
 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     void Awake()
     {
         hp = 1000f;
+        hpText.text = Mathf.CeilToInt(hp).ToString();
         healthBar.maxValue = hp;
         healthBar.value = hp;
     }
@@ -38,21 +40,20 @@ public class PlayerController : MonoBehaviour {
             float force = col.gameObject.GetComponent<BulletFather>().currMag;
             float totalDamage = damage + force;
             hp -= totalDamage;
+            hpText.text = Mathf.CeilToInt(hp).ToString();
             healthBar.value = hp;
             print("You took " + totalDamage + " damage!");
             Destroy(col.gameObject);
             if(hp <= 0)
             {
                 hp = 0;
+                hpText.text = "0";
                 healthBar.value = 0;
                 Destroy(playerAvatar);
                 isDead = true;
 
                 ingameController.LoserNotification(this.gameObject);
             }
-        } else
-        {
-            print("sek salah");
         }
     }
 }

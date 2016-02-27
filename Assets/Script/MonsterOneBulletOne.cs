@@ -8,7 +8,7 @@ public class MonsterOneBulletOne : BulletFather {
         rb = GetComponent<Rigidbody2D>();
         damage = 200f;
         maxVelocity = 50f;
-        life = 1f;
+        life = 5f;
         Physics2D.IgnoreLayerCollision(8, 8, false);
     }
 

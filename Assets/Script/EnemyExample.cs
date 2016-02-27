@@ -42,6 +42,7 @@ public class EnemyExample : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if(col.gameObject.tag == "bullets"){
+            monster.GetComponent<Animator>().SetBool("Hit", true);
 			float damage = col.gameObject.GetComponent<BulletFather>().damage;
 			float force = col.gameObject.GetComponent<BulletFather>().currMag;
 			float totalDamage = damage + force;

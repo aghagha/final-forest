@@ -50,4 +50,9 @@ public class BulletController : MonoBehaviour {
         Instantiate(bullet2, pos, Quaternion.identity);
         
     }
+
+    private void setIdle()
+    {
+        gameObject.GetComponent<Animator>().SetBool("Hit", false);
+    }
 }

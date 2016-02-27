@@ -8,7 +8,7 @@ public class MonsterOneBulletOne : BulletFather {
         rb = GetComponent<Rigidbody2D>();
         damage = 200f;
         maxVelocity = 50f;
-        life = 10f;
+        life = 1f;
         Physics2D.IgnoreLayerCollision(8, 8, false);
     }
 
@@ -23,7 +23,9 @@ public class MonsterOneBulletOne : BulletFather {
             //    Kamikaze();
         if (life <= 0f)
             isDying = true;
-        transform.Rotate(0, 0, 360 * Time.deltaTime);
+        rb.angularVelocity = 360f;
+        //transform.Rotate(0, 0, 360 * Time.deltaTime);
+        //transform.rotation = Quaternion.Euler(new Vector3(0,0,360 * Time.deltaTime));
     }
 
     void FixedUpdate()

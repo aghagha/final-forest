@@ -21,8 +21,7 @@ public class BulletFather : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        life = life - Time.deltaTime;
-        print(life);
+        life -= Time.deltaTime;
 	}
 
     public virtual void SpawnBullet()
@@ -52,7 +51,19 @@ public class BulletFather : MonoBehaviour {
 
         if(isDying)
         {
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
+    }
+
+    private IEnumerator Die()
+    {
+        //PlayAnimation(GlobalSettings.animDeath1, WrapeMode.ClampForever);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<TrailRenderer>().enabled = false;
+        rb.velocity = new Vector3 (0,0);
+        rb.freezeRotation = true;
+        gameObject.GetComponent<Animator>().SetBool("Boom", true);
+        yield return new WaitForSeconds(1.033f);
+        Destroy(gameObject);
     }
 }

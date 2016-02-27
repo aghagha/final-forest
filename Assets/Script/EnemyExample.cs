@@ -45,13 +45,19 @@ public class EnemyExample : MonoBehaviour {
 			float damage = col.gameObject.GetComponent<BulletFather>().damage;
 			float force = col.gameObject.GetComponent<BulletFather>().currMag;
 			float totalDamage = damage + force;
-			//print("BAM! You Dealt "+totalDamage+" damage!");
-			health -= (totalDamage);
-			if(health<0f)health=0f;
+            //print("BAM! You Dealt "+totalDamage+" damage!");
+            decreaseHealth(totalDamage);
 			SetHealthText();
 			Destroy(col.gameObject);
 		}
 	}
+
+    public void decreaseHealth(float amount)
+    {
+        health -= amount;
+        if (health <= 0f)
+            health = 0f;
+    }
 
 	void SetHealthText(){
 		int hp = (int)health;

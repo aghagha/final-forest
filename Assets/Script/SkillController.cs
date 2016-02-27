@@ -17,10 +17,9 @@ public class SkillController : MonoBehaviour {
         }
 	}
 
-    void ShootRays()
+    public void ShootRays()
     {
-        Vector3 pos = new Vector3(0, -7.7f, 2.8f);
-        Vector2 dir;
+        Vector3 pos = new Vector3(-0.2f, -7.7f, 2.8f);
         GameObject[] obj;
         obj = new GameObject[3];
         int i;

@@ -10,9 +10,10 @@ public class SpecialEffectHelper : MonoBehaviour {
 
     void Awake()
     {
+
         if (Instance != null)
         {
-            print("should be");
+            print("It should be null, Doge.");
         }
 
         Instance = this;

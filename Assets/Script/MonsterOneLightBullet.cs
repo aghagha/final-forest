@@ -12,7 +12,7 @@ public class MonsterOneLightBullet : BulletFather {
         rb = GetComponent<Rigidbody2D>();
         damage = 50f;
         maxVelocity = 50f;
-        life = 20f;
+        life = 0.5f;
         Physics2D.IgnoreLayerCollision(8, 8);
     }
 
@@ -25,7 +25,7 @@ public class MonsterOneLightBullet : BulletFather {
     // Update is called once per frame
     void Update()
     {
-        life--;
+        life-=Time.deltaTime;
         if(life <= 0)
         {
             Kamikaze();

@@ -91,9 +91,20 @@ public class Orb : MonoBehaviour {
     //skill 2 - ray
     public void ShootRays()
     {
-        Instantiate(rays, new Vector3(0, -7.7f, 10.41f), Quaternion.identity);
+        /*Instantiate(rays, new Vector3(0, -7.7f, 10.41f), Quaternion.identity);
         currentCoolDownB = coolDownB;
-        rayButton.enabled = false;
+        rayButton.enabled = false;*/
+        currentCoolDownB = coolDownB;
+        Vector3 pos = new Vector3(-0.2f, -7.7f, 2.8f);
+        GameObject[] obj;
+        obj = new GameObject[3];
+        int i;
+
+        for (i = 0; i < 3; i++)
+        {
+            obj[i] = (GameObject)Instantiate(rays, pos, Quaternion.identity);
+            obj[i].GetComponent<Rigidbody2D>().velocity = new Vector2(-5 + i * 5, 15);
+        }
     }
 
     public void CountCooldown(Button button, float coolDown, float currentCoolDown)

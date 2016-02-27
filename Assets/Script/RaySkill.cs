@@ -13,18 +13,21 @@ public class RaySkill : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    force = new Vector2(0,10f);
-        SpawnRay();
+	    
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        FaceDirection();
+    }
 
-    void SpawnRay()
+    void FaceDirection()
     {
-        rb.velocity = force;
-        //rb.AddForce(force * Time.deltaTime, ForceMode2D.Impulse);
+        Vector3 moveDirection = rb.velocity;
+        if (moveDirection != Vector3.zero)
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 }

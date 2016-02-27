@@ -5,22 +5,30 @@ using System.Collections;
 public class Orb : MonoBehaviour {
 	
 	public float speed = 20f;
-    public GameObject barrier;
-    public Button barrierButton;
-    public Animator impale;
 
-    public float coolDown;
-    float currentCoolDown;
-	Rigidbody2D rb;
+    //skill 1 - barrier
+    public float coolDownA;
+    float currentCoolDownA;
+    public GameObject barrier;
+    public Animator impale;
+    public Button barrierButton;
+
+    //skill 2 - bullet
+    public float coolDownB;
+    float currentCoolDownB;
+    public GameObject rays;
+    Vector2 force;
+
+    Rigidbody2D rb;
     public float barrierTimer = 0f;
 
 	void Awake(){
-        currentCoolDown = coolDown;
+        currentCoolDownA = coolDownA;
 		rb = GetComponent<Rigidbody2D>();
         barrier.GetComponent<Renderer>().enabled = false;
         barrier.GetComponent<Collider2D>().enabled = false;
         impale = barrier.GetComponent<Animator>();
-        //barrierButton.enabled = false;
+        barrierButton.enabled = false;
     }
 	
 	void Start () {
@@ -28,14 +36,14 @@ public class Orb : MonoBehaviour {
 	}
 
 	void Update () {
-        currentCoolDown--;
+        currentCoolDownA--;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
         BarrierSkill();
-        CountCooldown();
+        CountCooldown(barrierButton, coolDownA, currentCoolDownA);
     }
 	
 	void FixedUpdate(){
@@ -63,20 +71,28 @@ public class Orb : MonoBehaviour {
 		return ray.GetPoint(distance);
 	}
 
+    //skill 1 - barrier
+
     public void ActivateBarrier()
     {
         impale.SetBool("Active", true);
         SpecialEffectHelper.Instance.GroundExplosion(barrier.transform.position - new Vector3(0,2.5f,0));
         barrierTimer = 100f;
-        currentCoolDown = coolDown;
+        currentCoolDownA = coolDownA;
         barrierButton.enabled = false;
     }
 
-    public void CountCooldown()
+    //skill 2 - ray
+    public void ShootRays()
+    {
+        Instantiate(rays, new Vector3(0, -7.7f, 10.41f), Quaternion.identity);
+    }
+
+    public void CountCooldown(Button button, float coolDown, float currentCoolDown)
     {
         if (currentCoolDown > 0)
-            barrierButton.image.fillAmount = ( coolDown - currentCoolDown )/ coolDown;
-        else barrierButton.enabled = true;
+            button.image.fillAmount = ( coolDown - currentCoolDown )/ coolDown;
+        else button.enabled = true;
     }
 	
     void BarrierSkill()

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     void Awake()
     {
-        hp = 1000f;
+        hp = 500f;
         hpText.text = Mathf.CeilToInt(hp).ToString();
         healthBar.maxValue = hp;
         healthBar.value = hp;

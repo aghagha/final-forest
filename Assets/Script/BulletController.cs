@@ -11,10 +11,15 @@ public class BulletController : MonoBehaviour {
     public float cooldownB = 0.5f;
     public float lastSpawn;
 
+    private IngameController ingameController;
+    public GameObject enemyCollider;
+
 	// Use this for initialization
 	void Start () {
+        gameObject.GetComponent<Animator>().SetBool("Die", false);
         lastSpawn = Time.time;
-	}
+        ingameController = GameObject.Find("IngameController").GetComponent<IngameController>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,4 +60,10 @@ public class BulletController : MonoBehaviour {
     {
         gameObject.GetComponent<Animator>().SetBool("Hit", false);
     }
+
+    void NotifyWin()
+    {
+        ingameController.LoserNotification(enemyCollider.gameObject);
+    }
+
 }

@@ -33,20 +33,19 @@ public class EnemyExample : MonoBehaviour {
 
 	void IsDead(){
 		if(health <= 0f){
-            Destroy(monster);
+            //Destroy(monster);
+            monster.gameObject.GetComponent<Animator>().SetBool("Die", true);
             PlayerPrefs.SetString("Level 2", "OK");
-            ingameController.LoserNotification(this.gameObject);
-            
         }
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
 		if(col.gameObject.tag == "bullets"){
-            monster.GetComponent<Animator>().SetBool("Hit", true);
+            monster.gameObject.GetComponent<Animator>().SetBool("Hit", true);
 			float damage = col.gameObject.GetComponent<BulletFather>().damage;
 			float force = col.gameObject.GetComponent<BulletFather>().currMag;
 			float totalDamage = damage + force;
-			print("BAM! You Dealt "+totalDamage+" damage!");
+			//print("BAM! You Dealt "+totalDamage+" damage!");
 			health -= (totalDamage);
 			if(health<0f)health=0f;
 			SetHealthText();

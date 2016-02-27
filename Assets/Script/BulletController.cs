@@ -5,32 +5,37 @@ public class BulletController : MonoBehaviour {
 	public GameObject bullet1;
     public GameObject bullet2;    
 
-    public float bulletTimer = 1000f;
+    public float bulletTimer = 15f;
 
-    public float cd = 1f;
+    public float cooldownA = 1.5f;
+    public float cooldownB = 0.5f;
     public float lastSpawn;
 
 	// Use this for initialization
 	void Start () {
-        
+        lastSpawn = Time.time;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        bulletTimer -= 1f;
-        if (bulletTimer > 600f)
+        bulletTimer -= Time.deltaTime;
+        if (bulletTimer > 8f)
         {
-            if(bulletTimer % 70 == 0)
-                AttackTypeOne();
-        }
-        else if(bulletTimer <500f && bulletTimer >100f)
-        {
-            if(bulletTimer % 20f == 0)
+            if((Time.time - lastSpawn) > cooldownA)
             {
-                AttackTypeTwo();
+                AttackTypeOne();
+                lastSpawn = Time.time;
             }
         }
-        else if (bulletTimer <= 0f) bulletTimer = 1000f;
+        else if(bulletTimer <7.5f && bulletTimer >0.5f)
+        {
+            if ((Time.time - lastSpawn) > cooldownB)
+            {
+                AttackTypeTwo();
+                lastSpawn = Time.time;
+            }
+        }
+        else if (bulletTimer <= 0f) bulletTimer = 15f;
     }
 
     void AttackTypeOne()

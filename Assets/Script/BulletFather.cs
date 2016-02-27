@@ -11,10 +11,11 @@ public class BulletFather : MonoBehaviour {
     protected Vector2 direction;
     protected Vector2 force;
     protected Rigidbody2D rb;
-    
+    protected bool isDying = false;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -47,6 +48,11 @@ public class BulletFather : MonoBehaviour {
         if(col.gameObject.tag != "Player")
         {
             SpecialEffectHelper.Instance.Spark(transform.position);
+        }
+
+        if(isDying)
+        {
+            Destroy(gameObject);
         }
     }
 }

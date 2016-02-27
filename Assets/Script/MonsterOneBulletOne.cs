@@ -8,7 +8,7 @@ public class MonsterOneBulletOne : BulletFather {
         rb = GetComponent<Rigidbody2D>();
         damage = 200f;
         maxVelocity = 50f;
-        life = 300f;
+        life = 10f;
         Physics2D.IgnoreLayerCollision(8, 8, false);
     }
 
@@ -20,9 +20,9 @@ public class MonsterOneBulletOne : BulletFather {
 	private void Update () {
         life -= Time.deltaTime;
         //if (life <= 20f)
-        //    Kamikaze();
+            //    Kamikaze();
         if (life <= 0f)
-            Destroy(gameObject);
+            isDying = true;
         transform.Rotate(0, 0, 360 * Time.deltaTime);
     }
 

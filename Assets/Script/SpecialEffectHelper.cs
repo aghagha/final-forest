@@ -7,6 +7,8 @@ public class SpecialEffectHelper : MonoBehaviour {
 
     public ParticleSystem sparkEffect;
     public ParticleSystem groundEffect;
+    public ParticleSystem raysEffect;
+    public ParticleSystem poofEffect;
 
     void Awake()
     {
@@ -37,6 +39,16 @@ public class SpecialEffectHelper : MonoBehaviour {
     public void GroundExplosion(Vector3 position)
     {
         instantiate(groundEffect, position);
+    }
+
+    public void RaysParticle( Vector3 position)
+    {
+        instantiate(raysEffect, position);
+    }
+
+    public void Poof(Vector3 position)
+    {
+        instantiate(poofEffect, position);
     }
 
     private ParticleSystem instantiate(ParticleSystem prefab, Vector3 position)
